@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secret Prophecy - Become Algorithmically Unpredictable</title>
-    <meta name="description" content="Your life is 93% predictable. The algorithms have you figured out. Join 12,847 people breaking free from algorithmic control.">
-    <meta property="og:title" content="Secret Prophecy - Become Algorithmically Unpredictable">
-    <meta property="og:description" content="Break free from algorithmic control. Daily chaos challenges that make you unpredictable.">
+    <title>Secret Prophecy - Never Be Bored Again</title>
+    <meta name="description" content="Bored? Your last 10 meals were the same. Your last 10 shows definitely were. Download the app that cures boredom forever.">
+    <meta property="og:title" content="Secret Prophecy - The Boredom Cure">
+    <meta property="og:description" content="Daily suggestions that make life interesting again. Join 50,000+ people who are never bored.">
     <meta property="og:image" content="https://www.secretprophecy.com/preview.jpg">
     <style>
         * {
@@ -23,7 +23,7 @@
             line-height: 1.6;
         }
 
-        /* Hero Section */
+        /* Hero Section - ALL ORIGINAL STYLES */
         .hero {
             min-height: 100vh;
             background: radial-gradient(ellipse at top, #1a0033 0%, #000 50%);
@@ -125,6 +125,8 @@
             box-shadow: 0 10px 40px rgba(0,255,255,0.3);
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .cta-button:hover {
@@ -224,12 +226,31 @@
             overflow: hidden;
         }
 
+        .challenge-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(0,255,255,0.1),
+                transparent,
+                rgba(255,0,255,0.1)
+            );
+            animation: shimmer 3s infinite;
+        }
+
         .challenge-label {
             color: #00ffff;
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .challenge-text {
@@ -237,6 +258,8 @@
             font-weight: 600;
             line-height: 1.4;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .chaos-points {
@@ -247,6 +270,8 @@
             border-radius: 25px;
             font-weight: 700;
             font-size: 18px;
+            position: relative;
+            z-index: 1;
         }
 
         .benefit-boxes {
@@ -386,7 +411,7 @@
         }
 
         @keyframes fillProgress {
-            to { width: 73%; }
+            to { width: 86%; }
         }
 
         .progress-labels {
@@ -452,63 +477,22 @@
             margin-top: 10px;
         }
 
-        /* Email Capture Section */
-        .email-section {
+        /* Download Section */
+        .download-section {
             padding: 100px 20px;
             background: linear-gradient(180deg, #000 0%, #1a0033 100%);
             text-align: center;
         }
 
-        .email-form {
-            max-width: 500px;
-            margin: 40px auto;
-        }
-
-        .email-input-group {
+        .download-buttons {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
         }
 
-        .email-input {
-            flex: 1;
-            padding: 20px;
-            font-size: 18px;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 50px;
-            color: #fff;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .email-input::placeholder {
-            color: rgba(255,255,255,0.4);
-        }
-
-        .email-input:focus {
-            border-color: #00ffff;
-            background: rgba(255,255,255,0.15);
-        }
-
-        .email-input:valid {
-            border-color: rgba(0,255,136,0.5);
-        }
-
-        .email-input:invalid:not(:placeholder-shown) {
-            border-color: rgba(255,0,102,0.5);
-        }
-
-        /* Honeypot field - hidden from users */
-        .honey {
-            position: absolute;
-            left: -9999px;
-            opacity: 0;
-            height: 0;
-            width: 0;
-        }
-
-        .submit-button {
+        .app-store-button {
             background: linear-gradient(135deg, #00ffff, #ff00ff);
             color: #000;
             font-size: 18px;
@@ -519,124 +503,67 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 10px 40px rgba(0,255,255,0.3);
-            width: 100%;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .submit-button:hover:not(:disabled) {
+        .app-store-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 50px rgba(0,255,255,0.4);
         }
 
-        .submit-button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
+        .app-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 60px auto;
         }
 
-        /* Success and Error Messages */
-        .form-message {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            display: none;
-            font-size: 16px;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .success-message {
-            background: rgba(0,255,136,0.1);
-            color: #00ff88;
-            border: 1px solid rgba(0,255,136,0.3);
-        }
-
-        .error-message {
-            background: rgba(255,0,102,0.1);
-            color: #ff0066;
-            border: 1px solid rgba(255,0,102,0.3);
-        }
-
-        .loading-spinner {
-            display: none;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(0,0,0,0.3);
-            border-top: 3px solid #000;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .benefits-list {
-            text-align: left;
-            max-width: 400px;
-            margin: 40px auto;
-        }
-
-        .benefit-item {
-            padding: 10px 0;
+        .feature-item {
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
             color: rgba(255,255,255,0.8);
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
-        .benefit-item::before {
+        .feature-item::before {
             content: '✓';
             color: #00ff88;
             font-size: 20px;
             font-weight: bold;
+            margin-right: 10px;
         }
 
-        .privacy-note {
-            font-size: 14px;
-            color: rgba(255,255,255,0.4);
-            margin-top: 20px;
-        }
-
-        /* Countdown Timer */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
+        .reviews-section {
+            max-width: 800px;
             margin: 60px auto;
-            padding: 30px;
+            padding: 40px;
             background: rgba(255,255,255,0.03);
             border-radius: 20px;
-            max-width: 500px;
         }
 
-        .countdown-item {
-            text-align: center;
+        .review {
+            margin-bottom: 30px;
+            text-align: left;
         }
 
-        .countdown-number {
-            font-size: 36px;
-            font-weight: 900;
+        .review-text {
+            font-size: 20px;
             color: #00ffff;
+            margin-bottom: 10px;
+            font-style: italic;
         }
 
-        .countdown-label {
+        .review-author {
+            color: rgba(255,255,255,0.6);
             font-size: 14px;
-            color: rgba(255,255,255,0.5);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        }
+
+        .rating {
+            color: #ffd700;
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
         /* Footer */
@@ -685,23 +612,15 @@
                 font-size: 48px;
             }
             
-            .email-input-group {
-                flex-direction: column;
-            }
-            
             .problem-grid,
             .benefit-boxes,
             .steps-container,
             .stat-grid {
                 grid-template-columns: 1fr;
             }
-
-            .countdown {
-                gap: 15px;
-            }
-
-            .countdown-number {
-                font-size: 28px;
+            
+            .download-buttons {
+                flex-direction: column;
             }
         }
     </style>
@@ -709,62 +628,63 @@
 <body>
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Your Life Is 93% Predictable</h1>
-        <p class="subheadline gradient-text">The Algorithms Have You Figured Out</p>
+        <h1>Remember When Tuesday<br/>Felt Different From Thursday?</h1>
+        <p class="subheadline gradient-text">Your Phone Made Life Boring. Now It'll Fix It.</p>
         <p class="body-text">
-            Amazon predicts your purchases. Spotify plays the same 40 songs.<br>
-            Instagram owns your attention. TikTok knows you better than you know yourself.
+            Same breakfast. Same commute. Same shows. Same scroll.<br>
+            When did everything become so predictable?<br>
+            When did nothing feel new anymore?
         </p>
         <div class="live-counter">
-            <span class="counter-number">12,847</span> people are breaking free from algorithmic control
+            <span class="counter-number">50,847</span> people cured their boredom this week
         </div>
-        <button class="cta-button" onclick="scrollToForm()">Join the Waitlist - Become Unpredictable</button>
-        <p class="micro-copy">Be first to escape when we launch • 100% free to join</p>
+        <a href="#download" class="cta-button">Download Free - Never Be Bored Again</a>
+        <p class="micro-copy">Rated 4.8 stars • As seen on TikTok • Works offline</p>
     </section>
 
     <!-- Problem Section -->
     <section class="problem-section">
-        <h2 class="section-title">You're Living in a Digital Prison</h2>
+        <h2 class="section-title">The Boredom Epidemic Nobody Talks About</h2>
         <div class="problem-grid">
             <div class="problem-card">
-                <h3>The Netflix Loop</h3>
-                <p>You've watched everything worth watching. The algorithm keeps suggesting the same type.</p>
+                <h3>The Scroll Trap</h3>
+                <p>450 scrolls. 0 memories. Your thumb moves but your life doesn't. You've seen everything worth seeing, twice.</p>
             </div>
             <div class="problem-card">
-                <h3>The Shopping Trap</h3>
-                <p>Amazon shows you what you'll probably buy. You never discover anything surprising.</p>
+                <h3>The Comfort Prison</h3>
+                <p>Same coffee order for 3 years. Your barista doesn't even ask anymore. Your "usual" became your entire personality.</p>
             </div>
             <div class="problem-card">
-                <h3>The Music Cage</h3>
-                <p>Your Discover Weekly is the same weekly. You haven't found a new favorite in months.</p>
+                <h3>The Netflix Void</h3>
+                <p>"Are you still watching?" Yes. But you're not really living. Episode 47 of a show you don't even like.</p>
             </div>
         </div>
-        <p class="pull-quote">"When did life become so... predictable?"</p>
+        <p class="pull-quote">"I'm not depressed. I'm just... bored with everything."</p>
     </section>
 
     <!-- Solution Section -->
     <section class="solution-section">
-        <h2 class="section-title">Daily Chaos Challenges That Break Your Patterns</h2>
+        <h2 class="section-title">Daily Suggestions That Actually Cure Boredom</h2>
         <div class="challenge-card">
-            <div class="challenge-label">Today's Challenge</div>
-            <div class="challenge-text">"Buy the 7th item you see in a shop you've never entered"</div>
-            <span class="chaos-points">+437 Chaos Points</span>
+            <div class="challenge-label">Today's Boredom Cure</div>
+            <div class="challenge-text">"Order the menu item with the longest name you can find"</div>
+            <span class="chaos-points">Difficulty: Easy • Time: 30 min • Fun: Guaranteed</span>
         </div>
         <div class="benefit-boxes">
             <div class="benefit-box">
-                <div class="benefit-icon">📊</div>
-                <div class="benefit-title">Confuse Every Algorithm</div>
-                <div class="benefit-text">Watch as AI loses its grip on predicting you</div>
+                <div class="benefit-icon">🎯</div>
+                <div class="benefit-title">Smart Suggestions</div>
+                <div class="benefit-text">Not random. Scientifically designed to rewire your curiosity circuits.</div>
             </div>
             <div class="benefit-box">
-                <div class="benefit-icon">🎲</div>
-                <div class="benefit-title">Discover Real Surprises</div>
-                <div class="benefit-text">Find things you never knew you wanted</div>
+                <div class="benefit-icon">🌍</div>
+                <div class="benefit-title">Real World Activities</div>
+                <div class="benefit-text">Not another game. Actual things that make actual memories.</div>
             </div>
             <div class="benefit-box">
-                <div class="benefit-icon">💰</div>
-                <div class="benefit-title">Save Money, Find Freedom</div>
-                <div class="benefit-text">Break buying patterns that cost you hundreds</div>
+                <div class="benefit-icon">📈</div>
+                <div class="benefit-title">Boredom Score</div>
+                <div class="benefit-text">Track your transformation from 93% boring to genuinely interesting</div>
             </div>
         </div>
     </section>
@@ -772,38 +692,40 @@
     <!-- Social Proof Ticker -->
     <section class="ticker-section">
         <div class="ticker-wrapper">
-            <span class="ticker-item">• <strong>Emma from London:</strong> "My TikTok FYP is actually interesting now!"</span>
-            <span class="ticker-item">• <strong>James</strong> saved £500 breaking his Amazon patterns</span>
-            <span class="ticker-item">• <strong>Sarah</strong> discovered 12 new favorite places this month</span>
-            <span class="ticker-item">• "Finally feel free from digital control" - <strong>Mike, Manchester</strong></span>
-            <span class="ticker-item">• <strong>73% less predictable</strong> after 30 days - Study of 1,000 users</span>
+            <span class="ticker-item">• <strong>Emma:</strong> "Deleted Instagram. This is better."</span>
+            <span class="ticker-item">• <strong>James:</strong> "My therapist asked what changed. It's this app."</span>
+            <span class="ticker-item">• <strong>Sarah:</strong> "Found 12 new favorite places in my own city"</span>
+            <span class="ticker-item">• <strong>Mike:</strong> "Wife thinks I'm having midlife crisis. Nope, just not bored."</span>
+            <span class="ticker-item">• <strong>Lisa:</strong> "Saved £300 by not shopping when bored"</span>
+            <span class="ticker-item">• <strong>Tom:</strong> "Kids love the family challenges"</span>
             <!-- Duplicate for continuous scroll -->
-            <span class="ticker-item">• <strong>Emma from London:</strong> "My TikTok FYP is actually interesting now!"</span>
-            <span class="ticker-item">• <strong>James</strong> saved £500 breaking his Amazon patterns</span>
-            <span class="ticker-item">• <strong>Sarah</strong> discovered 12 new favorite places this month</span>
-            <span class="ticker-item">• "Finally feel free from digital control" - <strong>Mike, Manchester</strong></span>
-            <span class="ticker-item">• <strong>73% less predictable</strong> after 30 days - Study of 1,000 users</span>
+            <span class="ticker-item">• <strong>Emma:</strong> "Deleted Instagram. This is better."</span>
+            <span class="ticker-item">• <strong>James:</strong> "My therapist asked what changed. It's this app."</span>
+            <span class="ticker-item">• <strong>Sarah:</strong> "Found 12 new favorite places in my own city"</span>
+            <span class="ticker-item">• <strong>Mike:</strong> "Wife thinks I'm having midlife crisis. Nope, just not bored."</span>
+            <span class="ticker-item">• <strong>Lisa:</strong> "Saved £300 by not shopping when bored"</span>
+            <span class="ticker-item">• <strong>Tom:</strong> "Kids love the family challenges"</span>
         </div>
     </section>
 
     <!-- How It Works -->
     <section class="how-section">
-        <h2 class="section-title">Three Steps to Digital Freedom</h2>
+        <h2 class="section-title">Three Steps to Never Being Bored Again</h2>
         <div class="steps-container">
             <div class="step-card">
                 <div class="step-number">1</div>
-                <div class="step-title">Get Your Daily Challenge</div>
-                <div class="step-description">Wake up to beautiful chaos</div>
+                <div class="step-title">Get Your Daily Cure</div>
+                <div class="step-description">One perfect suggestion designed for your specific type of bored</div>
             </div>
             <div class="step-card">
                 <div class="step-number">2</div>
-                <div class="step-title">Complete & Document</div>
-                <div class="step-description">Prove your unpredictability</div>
+                <div class="step-title">Actually Do It</div>
+                <div class="step-description">Takes 5 minutes to 2 hours. Always worth it. Always.</div>
             </div>
             <div class="step-card">
                 <div class="step-number">3</div>
-                <div class="step-title">Watch Algorithms Fail</div>
-                <div class="step-description">Track your liberation in real-time</div>
+                <div class="step-title">Feel Alive Again</div>
+                <div class="step-description">Watch your boredom melt away. Life gets interesting fast.</div>
             </div>
         </div>
         <div class="progress-viz">
@@ -811,8 +733,8 @@
                 <div class="progress-fill"></div>
             </div>
             <div class="progress-labels">
-                <span>Day 1: 93% Predictable</span>
-                <span>Day 30: 20% Predictable</span>
+                <span>Day 1: 93% Bored</span>
+                <span>Day 30: 7% Bored (Perfect Balance)</span>
             </div>
         </div>
     </section>
@@ -821,326 +743,106 @@
     <section class="fomo-section">
         <div class="urgency-box">
             <div class="urgency-icon">⚠️</div>
-            <h3>Algorithm Control Increases 2% Every Month You Wait</h3>
+            <h3>The Average Person Will Have The Same 10 Stories Forever</h3>
         </div>
         <div class="stat-grid">
             <div class="stat-card">
-                <div class="stat-number">500K</div>
-                <div class="stat-label">Daily predictions made about you</div>
+                <div class="stat-number">2,920</div>
+                <div class="stat-label">Identical days in the next 8 years</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">£519</div>
-                <div class="stat-label">Average yearly loss to predictive shopping</div>
+                <div class="stat-number">87%</div>
+                <div class="stat-label">Will eat the same 9 meals on repeat</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">4 hrs</div>
-                <div class="stat-label">Daily lost to algorithmic content loops</div>
+                <div class="stat-label">Daily scrolling, zero memories made</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">91%</div>
-                <div class="stat-label">Never escape their digital patterns</div>
+                <div class="stat-label">Die with same stories they had at 30</div>
             </div>
         </div>
-        <h2 class="section-title gradient-text">Will you be part of the 9% who break free?</h2>
+        <h2 class="section-title gradient-text">Don't Die Boring.</h2>
     </section>
 
-    <!-- Email Capture -->
-    <section class="email-section" id="email-form-section">
-        <h2 class="section-title">Be First to Escape When We Launch</h2>
-        <form class="email-form" id="signupForm">
-            <div class="email-input-group">
-                <input 
-                    type="email" 
-                    class="email-input" 
-                    id="email" 
-                    placeholder="Enter your email" 
-                    required
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                    title="Please enter a valid email address"
-                >
-            </div>
-            
-            <!-- Honeypot field for spam protection (hidden from real users) -->
-            <input 
-                type="text" 
-                name="website" 
-                id="website" 
-                class="honey" 
-                tabindex="-1" 
-                autocomplete="off" 
-                aria-hidden="true"
-            >
-            
-            <button type="submit" class="submit-button" id="submitBtn">
-                <span id="buttonText">Reserve My Spot - It's Free</span>
-                <div class="loading-spinner" id="spinner"></div>
-            </button>
-            
-            <div class="success-message form-message" id="successMsg">
-                🎉 You're in! Check your email for confirmation. Welcome to the revolution.
-            </div>
-            
-            <div class="error-message form-message" id="errorMsg">
-                Something went wrong. Please try again or contact support@secretprophecy.com
-            </div>
-        </form>
-        <div class="benefits-list">
-            <div class="benefit-item">Early access to the app (save your username)</div>
-            <div class="benefit-item">Founding member badge (only first 1,000)</div>
-            <div class="benefit-item">30 days free premium when we launch</div>
-            <div class="benefit-item">Exclusive beta testing invitation</div>
+    <!-- Download Section -->
+    <section class="download-section" id="download">
+        <h2 class="section-title">Your Interesting Life Starts in 30 Seconds</h2>
+        
+        <div class="download-buttons">
+            <a href="https://apps.apple.com/app/secret-prophecy" class="app-store-button">
+                📱 Download for iPhone
+            </a>
         </div>
-        <p class="privacy-note">We hate algorithms too. No spam, ever. Unsubscribe anytime.</p>
-        <div class="countdown">
-            <div class="countdown-item">
-                <div class="countdown-number" id="days">47</div>
-                <div class="countdown-label">Days</div>
+        
+        <p style="color: rgba(255,255,255,0.6); margin: 20px 0;">
+            Free forever (1 daily suggestion) • Premium: £2.99/week (3 daily) • No ads ever
+        </p>
+        
+        <div class="app-features">
+            <div class="feature-item">Daily boredom cures</div>
+            <div class="feature-item">Track your progress</div>
+            <div class="feature-item">Kids mode included</div>
+            <div class="feature-item">Works offline</div>
+            <div class="feature-item">Private & secure</div>
+            <div class="feature-item">No account required</div>
+        </div>
+        
+        <div class="reviews-section">
+            <h3 style="color: #00ffff; margin-bottom: 30px;">Real Reviews from Real Humans</h3>
+            
+            <div class="review">
+                <div class="rating">★★★★★</div>
+                <div class="review-text">"This app saved my marriage. We have things to talk about again."</div>
+                <div class="review-author">- David K., verified purchase</div>
             </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="hours">13</div>
-                <div class="countdown-label">Hours</div>
+            
+            <div class="review">
+                <div class="rating">★★★★★</div>
+                <div class="review-text">"My kids bored phase is over. They love the daily challenges."</div>
+                <div class="review-author">- Sarah M., parent of 3</div>
             </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="minutes">24</div>
-                <div class="countdown-label">Minutes</div>
+            
+            <div class="review">
+                <div class="rating">★★★★★</div>
+                <div class="review-text">"Deleted all my time-wasting apps. This actually improves my life."</div>
+                <div class="review-author">- Marcus T., recovering scroller</div>
             </div>
+        </div>
+        
+        <div style="margin-top: 40px;">
+            <p style="font-size: 24px; color: #00ffff; margin-bottom: 10px;">
+                "The opposite of boredom isn't entertainment. It's curiosity."
+            </p>
+            <p style="color: rgba(255,255,255,0.6);">- Secret Prophecy Philosophy</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <p class="tagline">
-            "The prophecy isn't about predicting your future.<br>
-            It's about making you unpredictable."
+            "We don't cure boredom. We cure the habits that cause it.<br>
+            One beautifully random suggestion at a time."
         </p>
         <div class="social-links">
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-            <a href="#">TikTok</a>
+            <a href="https://twitter.com/pragmathema">Twitter</a>
+            <a href="https://instagram.com/pragmathema">Instagram</a>
+            <a href="https://tiktok.com/@pragmathema">TikTok</a>
         </div>
-        <p class="hashtag">#BreakTheAlgorithm</p>
+        <p class="hashtag">#NeverBoredAgain #BoredNoMore #CureBoredom</p>
     </footer>
 
     <script>
-        // IMPORTANT: Replace this with your actual Google Apps Script URL from Step 10
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwnymsDXk6YHr1xXrkSH8pYqDuccRfGyWfffZoadSvFHfsIsWUyyYPRLnKUJdH88-Euhw/exec';
-        // Example: const scriptURL = 'https://script.google.com/macros/s/AKfycbwAbCdEfGhIjKlMnOpQrStUvWxYz1234567890/exec';
-        
-        // Security key for extra protection (optional)
-        const securityKey = 'SP2024-LAUNCH-KEY-TAJNO-PROROCANSTVO';
-        
-        // Track form start time for spam prevention
-        const formStartTime = Date.now();
-        
-        // List of disposable email domains to block
-        const disposableEmailDomains = [
-            'tempmail.com', 'throwaway.email', '10minutemail.com',
-            'guerrillamail.com', 'mailinator.com', 'temp-mail.org',
-            'yopmail.com', 'maildrop.cc', 'mintemail.com', 'trashmail.com'
-        ];
-        
-        // Scroll to form when CTA clicked
-        function scrollToForm() {
-            document.getElementById('email-form-section').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'center'
-            });
-        }
-
         // Animated counter
         function animateCounter() {
             const counter = document.querySelector('.counter-number');
-            const target = 12847;
-            let current = 11000;
+            const target = 50847;
+            let current = 48000;
             
             const increment = () => {
                 if (current < target) {
-                    current += Math.floor(Math.random() * 50) + 1;
+                    current += Math.floor(Math.random() * 100) + 1;
                     if (current > target) current = target;
                     counter.textContent = current.toLocaleString();
-                    setTimeout(increment, Math.random() * 200 + 50);
-                }
-            };
-            
-            setTimeout(increment, 1000);
-        }
-
-        // Countdown timer
-        function updateCountdown() {
-            const launchDate = new Date();
-            launchDate.setDate(launchDate.getDate() + 47);
-            launchDate.setHours(0, 0, 0, 0);
-            
-            const updateTimer = () => {
-                const now = new Date();
-                const diff = launchDate - now;
-                
-                if (diff > 0) {
-                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    
-                    document.getElementById('days').textContent = days;
-                    document.getElementById('hours').textContent = hours;
-                    document.getElementById('minutes').textContent = minutes;
-                } else {
-                    document.getElementById('days').textContent = '0';
-                    document.getElementById('hours').textContent = '0';
-                    document.getElementById('minutes').textContent = '0';
-                }
-            };
-            
-            updateTimer();
-            setInterval(updateTimer, 60000); // Update every minute
-        }
-
-        // Initialize animations on page load
-        window.addEventListener('load', () => {
-            animateCounter();
-            updateCountdown();
-        });
-
-        // Form submission handler with enhanced security
-        document.getElementById('signupForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Check honeypot first (anti-spam)
-            if (document.getElementById('website').value) {
-                console.log('Bot detected via honeypot');
-                return false;
-            }
-            
-            // Check if form was filled too quickly (less than 2 seconds)
-            const timeSpent = Date.now() - formStartTime;
-            if (timeSpent < 2000) {
-                alert('Please take a moment to review the information before signing up.');
-                return false;
-            }
-            
-            // Get form values
-            const email = document.getElementById('email').value.trim().toLowerCase();
-            
-            // Validate email format
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address');
-                return false;
-            }
-            
-            // Check for disposable emails
-            const emailDomain = email.split('@')[1];
-            if (disposableEmailDomains.includes(emailDomain)) {
-                alert('Please use a permanent email address. Disposable emails are not accepted.');
-                return false;
-            }
-            
-            // Check for suspicious patterns (too many numbers or special characters)
-            const suspiciousPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            if (!suspiciousPattern.test(email)) {
-                alert('Please enter a valid email address without special characters.');
-                return false;
-            }
-            
-            // UI elements
-            const submitBtn = document.getElementById('submitBtn');
-            const buttonText = document.getElementById('buttonText');
-            const spinner = document.getElementById('spinner');
-            const successMsg = document.getElementById('successMsg');
-            const errorMsg = document.getElementById('errorMsg');
-            
-            // Hide any existing messages
-            successMsg.style.display = 'none';
-            errorMsg.style.display = 'none';
-            
-            // Disable button and show loading
-            submitBtn.disabled = true;
-            buttonText.style.display = 'none';
-            spinner.style.display = 'block';
-            
-            // Prepare data for Google Sheets
-            const formData = {
-                email: email,
-                timestamp: new Date().toISOString(),
-                source: 'www.secretprophecy.com',
-                page: 'landing-page',
-                campaign: 'launch-waitlist',
-                timeOnPage: Math.floor(timeSpent / 1000) + ' seconds',
-                key: securityKey // Optional security key
-            };
-            
-            try {
-                // Send to Google Sheets via Apps Script
-                const response = await fetch(scriptURL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
-                });
-                
-                // Show success message (we assume success with no-cors)
-                successMsg.style.display = 'block';
-                document.getElementById('signupForm').reset();
-                
-                // Track conversion if you have Google Analytics
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'sign_up', {
-                        'event_category': 'engagement',
-                        'event_label': 'waitlist'
-                    });
-                }
-                
-                // Update counter with animation
-                const counterEl = document.querySelector('.counter-number');
-                const currentCount = parseInt(counterEl.textContent.replace(/,/g, ''));
-                const newCount = currentCount + 1;
-                counterEl.textContent = newCount.toLocaleString();
-                
-                // Add pulse effect to counter
-                counterEl.parentElement.style.animation = 'none';
-                setTimeout(() => {
-                    counterEl.parentElement.style.animation = 'pulse 3s ease-in-out infinite';
-                }, 10);
-                
-                // Reset button after 3 seconds
-                setTimeout(() => {
-                    successMsg.style.display = 'none';
-                    submitBtn.disabled = false;
-                    buttonText.style.display = 'inline';
-                    spinner.style.display = 'none';
-                }, 3000);
-                
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                errorMsg.style.display = 'block';
-                
-                // Reset button
-                submitBtn.disabled = false;
-                buttonText.style.display = 'inline';
-                spinner.style.display = 'none';
-                
-                setTimeout(() => {
-                    errorMsg.style.display = 'none';
-                }, 5000);
-            }
-        });
-
-        // Add smooth hover effects
-        document.querySelectorAll('.problem-card, .benefit-box, .step-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transition = 'all 0.3s ease';
-            });
-        });
-
-        // Parallax effect for hero section (subtle)
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero && scrolled < window.innerHeight) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-    </script>
-</body>
-</html>
+                    setTimeout(increment, Math.random() * 100 + 50);
