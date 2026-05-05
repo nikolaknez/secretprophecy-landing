@@ -1,904 +1,677 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secret Prophecy - Never Be Bored Again</title>
-    <meta name="description" content="Bored? Your last 10 meals were the same. Your last 10 shows definitely were. Download the app that cures boredom forever.">
-    <meta property="og:title" content="Secret Prophecy - The Boredom Cure">
-    <meta property="og:description" content="Daily suggestions that make life interesting again. Join 50,000+ people who are never bored.">
-    <meta property="og:image" content="https://www.secretprophecy.com/preview.jpg">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-            background: #000;
-            color: #fff;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Hero Section - ALL ORIGINAL STYLES */
-        .hero {
-            min-height: 100vh;
-            background: radial-gradient(ellipse at top, #1a0033 0%, #000 50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(0,255,255,0.03), transparent, rgba(255,0,255,0.03));
-            animation: shimmer 15s linear infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%); }
-            100% { transform: translateX(100%) translateY(100%); }
-        }
-
-        h1 {
-            font-size: clamp(48px, 8vw, 96px);
-            font-weight: 900;
-            text-align: center;
-            letter-spacing: -2px;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #00ffff, #ff00ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .subheadline {
-            font-size: clamp(24px, 4vw, 36px);
-            color: rgba(255,255,255,0.9);
-            text-align: center;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .body-text {
-            font-size: 18px;
-            color: rgba(255,255,255,0.6);
-            text-align: center;
-            max-width: 600px;
-            margin-bottom: 40px;
-            line-height: 1.8;
-            position: relative;
-            z-index: 1;
-        }
-
-        .live-counter {
-            background: rgba(0,255,255,0.1);
-            border: 1px solid rgba(0,255,255,0.3);
-            border-radius: 50px;
-            padding: 15px 30px;
-            margin-bottom: 40px;
-            font-size: 18px;
-            position: relative;
-            z-index: 1;
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-
-        .counter-number {
-            color: #00ffff;
-            font-weight: bold;
-            font-size: 24px;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, #00ffff, #ff00ff);
-            color: #000;
-            font-size: 20px;
-            font-weight: 700;
-            padding: 20px 40px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0,255,255,0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 50px rgba(0,255,255,0.4);
-        }
-
-        .micro-copy {
-            margin-top: 20px;
-            font-size: 14px;
-            color: rgba(255,255,255,0.4);
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Problem Section */
-        .problem-section {
-            padding: 100px 20px;
-            background: linear-gradient(180deg, #000 0%, #0a0015 100%);
-        }
-
-        .section-title {
-            font-size: clamp(36px, 6vw, 56px);
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .problem-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .problem-card:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: rgba(0,255,255,0.3);
-            transform: translateY(-5px);
-        }
-
-        .problem-card h3 {
-            color: #ff0066;
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
-
-        .problem-card p {
-            color: rgba(255,255,255,0.7);
-            line-height: 1.6;
-        }
-
-        .pull-quote {
-            text-align: center;
-            font-size: 32px;
-            font-style: italic;
-            color: #00ffff;
-            margin: 80px auto;
-            max-width: 800px;
-            position: relative;
-        }
-
-        .pull-quote::before {
-            content: '"';
-            font-size: 120px;
-            position: absolute;
-            top: -40px;
-            left: -60px;
-            opacity: 0.1;
-        }
-
-        /* Solution Section */
-        .solution-section {
-            padding: 100px 20px;
-            background: radial-gradient(circle at center, #1a0033 0%, #000 70%);
-        }
-
-        .challenge-card {
-            max-width: 600px;
-            margin: 60px auto;
-            background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1));
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            border-image: linear-gradient(135deg, #00ffff, #ff00ff) 1;
-            border-radius: 24px;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .challenge-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent,
-                rgba(0,255,255,0.1),
-                transparent,
-                rgba(255,0,255,0.1)
-            );
-            animation: shimmer 3s infinite;
-        }
-
-        .challenge-label {
-            color: #00ffff;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .challenge-text {
-            font-size: 28px;
-            font-weight: 600;
-            line-height: 1.4;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .chaos-points {
-            display: inline-block;
-            background: linear-gradient(135deg, #00ff88, #00ffff);
-            color: #000;
-            padding: 10px 25px;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 18px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .benefit-boxes {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 900px;
-            margin: 60px auto 0;
-        }
-
-        .benefit-box {
-            text-align: center;
-            padding: 30px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .benefit-box:hover {
-            background: rgba(255,255,255,0.05);
-            transform: translateY(-5px);
-        }
-
-        .benefit-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-
-        .benefit-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #00ffff;
-        }
-
-        .benefit-text {
-            color: rgba(255,255,255,0.7);
-            font-size: 14px;
-        }
-
-        /* Social Proof Ticker */
-        .ticker-section {
-            padding: 40px 0;
-            background: rgba(0,255,255,0.05);
-            overflow: hidden;
-        }
-
-        .ticker-wrapper {
-            display: flex;
-            animation: scroll 30s linear infinite;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .ticker-item {
-            flex-shrink: 0;
-            padding: 0 40px;
-            font-size: 16px;
-            color: rgba(255,255,255,0.8);
-            white-space: nowrap;
-        }
-
-        .ticker-item strong {
-            color: #00ffff;
-        }
-
-        /* How It Works */
-        .how-section {
-            padding: 100px 20px;
-            background: linear-gradient(180deg, #000 0%, #0a0015 100%);
-        }
-
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 1000px;
-            margin: 60px auto;
-        }
-
-        .step-card {
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, #00ffff, #ff00ff);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            font-weight: 900;
-            color: #000;
-        }
-
-        .step-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .step-description {
-            color: rgba(255,255,255,0.7);
-        }
-
-        /* Progress Visualization */
-        .progress-viz {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 40px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 20px;
-        }
-
-        .progress-bar {
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff0066, #00ffff);
-            border-radius: 20px;
-            width: 0;
-            animation: fillProgress 3s ease-out forwards;
-            animation-delay: 0.5s;
-        }
-
-        @keyframes fillProgress {
-            to { width: 86%; }
-        }
-
-        .progress-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            font-size: 16px;
-        }
-
-        /* FOMO Section */
-        .fomo-section {
-            padding: 100px 20px;
-            background: radial-gradient(circle at bottom, #330000 0%, #000 50%);
-        }
-
-        .urgency-box {
-            max-width: 600px;
-            margin: 0 auto 60px;
-            padding: 30px;
-            border: 2px solid #ff0066;
-            border-radius: 20px;
-            background: rgba(255,0,102,0.1);
-            text-align: center;
-            animation: urgencyPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes urgencyPulse {
-            0%, 100% { border-color: #ff0066; }
-            50% { border-color: #ff3388; box-shadow: 0 0 30px rgba(255,0,102,0.3); }
-        }
-
-        .urgency-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 60px auto;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 30px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 20px;
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ff0066, #ff6600);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            color: rgba(255,255,255,0.7);
-            margin-top: 10px;
-        }
-
-        /* Download Section */
-        .download-section {
-            padding: 100px 20px;
-            background: linear-gradient(180deg, #000 0%, #1a0033 100%);
-            text-align: center;
-        }
-
-        .download-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-
-        .app-store-button {
-            background: linear-gradient(135deg, #00ffff, #ff00ff);
-            color: #000;
-            font-size: 18px;
-            font-weight: 700;
-            padding: 20px 40px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0,255,255,0.3);
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .app-store-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 50px rgba(0,255,255,0.4);
-        }
-
-        .app-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 800px;
-            margin: 60px auto;
-        }
-
-        .feature-item {
-            padding: 20px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 15px;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .feature-item::before {
-            content: '✓';
-            color: #00ff88;
-            font-size: 20px;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .reviews-section {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 40px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 20px;
-        }
-
-        .review {
-            margin-bottom: 30px;
-            text-align: left;
-        }
-
-        .review-text {
-            font-size: 20px;
-            color: #00ffff;
-            margin-bottom: 10px;
-            font-style: italic;
-        }
-
-        .review-author {
-            color: rgba(255,255,255,0.6);
-            font-size: 14px;
-        }
-
-        .rating {
-            color: #ffd700;
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        /* Footer */
-        .footer {
-            padding: 60px 20px;
-            background: #000;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .tagline {
-            font-size: 20px;
-            font-style: italic;
-            color: rgba(255,255,255,0.6);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-        }
-
-        .social-links a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #00ffff;
-        }
-
-        .hashtag {
-            color: #00ffff;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 48px;
-            }
-            
-            .problem-grid,
-            .benefit-boxes,
-            .steps-container,
-            .stat-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .download-buttons {
-                flex-direction: column;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Secret Prophecy — Private iPhone Apps by Nikola Knezevic</title>
+  <meta name="description" content="A small portfolio of private, offline-first iPhone apps for work, thought, time, decisions, health conversations and personal reflection." />
+  <meta name="theme-color" content="#17131f" />
+
+  <style>
+    :root {
+      --ink: #17131f;
+      --muted: #5f5968;
+      --paper: #f7f0e4;
+      --paper-2: #efe4d1;
+      --line: rgba(23, 19, 31, .18);
+      --red: #c94f3d;
+      --violet: #6e4d86;
+      --blue: #325c7d;
+      --green: #63795a;
+      --ochre: #c58b38;
+      --white: #fffaf1;
+      --shadow: 0 28px 70px rgba(23, 19, 31, .16);
+      --radius: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(201,79,61,.15), transparent 28%),
+        radial-gradient(circle at 84% 18%, rgba(110,77,134,.18), transparent 30%),
+        linear-gradient(135deg, var(--paper), var(--paper-2));
+      line-height: 1.45;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(23,19,31,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23,19,31,.045) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,.18));
+      z-index: -1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 28px 0 16px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background:
+        conic-gradient(from 210deg, var(--red), var(--violet), var(--blue), var(--green), var(--ochre), var(--red));
+      box-shadow: inset 0 0 0 6px rgba(255,250,241,.7);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 42px;
+      align-items: end;
+      padding: 64px 0 46px;
+    }
+
+    .kicker {
+      color: var(--red);
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin: 0 0 18px;
+    }
+
+    h1 {
+      font-family: ui-serif, "New York", Georgia, serif;
+      font-size: clamp(48px, 8vw, 104px);
+      line-height: .88;
+      letter-spacing: -.065em;
+      margin: 0;
+      max-width: 760px;
+    }
+
+    .hero p {
+      font-size: clamp(18px, 2vw, 24px);
+      color: var(--muted);
+      max-width: 640px;
+      margin: 26px 0 0;
+    }
+
+    .panel {
+      background: rgba(255,250,241,.72);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .data-panel {
+      padding: 26px;
+      position: relative;
+      min-height: 440px;
+    }
+
+    .rings {
+      position: absolute;
+      inset: 32px 34px auto auto;
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, transparent 34%, rgba(23,19,31,.14) 35%, transparent 36%, transparent 47%, rgba(23,19,31,.14) 48%, transparent 49%),
+        conic-gradient(var(--red) 0 16%, transparent 16% 24%, var(--violet) 24% 43%, transparent 43% 50%, var(--blue) 50% 68%, transparent 68% 74%, var(--green) 74% 88%, var(--ochre) 88% 100%);
+      opacity: .9;
+    }
+
+    .data-title {
+      position: relative;
+      font-family: ui-serif, "New York", Georgia, serif;
+      font-size: 42px;
+      line-height: .95;
+      letter-spacing: -.04em;
+      max-width: 290px;
+      margin: 0 0 24px;
+      z-index: 1;
+    }
+
+    .stat-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 110px;
+      z-index: 1;
+    }
+
+    .stat {
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .num {
+      font-family: ui-serif, "New York", Georgia, serif;
+      font-size: 52px;
+      letter-spacing: -.06em;
+      line-height: .9;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--white);
+      font-weight: 800;
+      letter-spacing: -.01em;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .section {
+      padding: 50px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 32px;
+      align-items: start;
+      border-top: 1px solid var(--line);
+      padding-top: 28px;
+      margin-bottom: 26px;
+    }
+
+    .section-num {
+      color: var(--red);
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    h2 {
+      font-family: ui-serif, "New York", Georgia, serif;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: .95;
+      letter-spacing: -.055em;
+      margin: 0;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 19px;
+      max-width: 720px;
+      margin: 14px 0 0;
+    }
+
+    .apps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      position: relative;
+      background: rgba(255,250,241,.78);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      min-height: 245px;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(23,19,31,.13);
+      background: rgba(255,250,241,.94);
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -52px;
+      bottom: -62px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: var(--accent, var(--violet));
+      opacity: .15;
+    }
+
+    .tag {
+      display: inline-flex;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-weight: 900;
+      color: var(--accent, var(--violet));
+      margin-bottom: 22px;
+    }
+
+    .card h3 {
+      font-family: ui-serif, "New York", Georgia, serif;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -.04em;
+      margin: 0 0 12px;
+      max-width: 260px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0 0 18px;
+      max-width: 310px;
+    }
+
+    .card .link {
+      position: absolute;
+      left: 22px;
+      bottom: 20px;
+      font-weight: 900;
+      font-size: 14px;
+      border-bottom: 2px solid currentColor;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(255,250,241,.66);
+    }
+
+    .matrix-item {
+      padding: 22px;
+      min-height: 180px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .matrix-item:nth-child(4n) { border-right: 0; }
+    .matrix-item:nth-last-child(-n+4) { border-bottom: 0; }
+
+    .matrix-item strong {
+      display: block;
+      font-family: ui-serif, "New York", Georgia, serif;
+      font-size: 26px;
+      line-height: 1;
+      letter-spacing: -.04em;
+      margin-bottom: 10px;
+    }
+
+    .matrix-item span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .quote {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .quote-card {
+      padding: 34px;
+    }
+
+    .quote-card blockquote {
+      font-family: ui-serif, "New York", Georgia, serif;
+      font-size: clamp(30px, 4vw, 58px);
+      line-height: .98;
+      letter-spacing: -.055em;
+      margin: 0;
+    }
+
+    .quote-card p {
+      color: var(--muted);
+      margin: 22px 0 0;
+      font-size: 18px;
+    }
+
+    footer {
+      padding: 52px 0 38px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+
+    .small-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .section-head,
+      .quote,
+      .footer-grid { grid-template-columns: 1fr; }
+
+      .apps { grid-template-columns: repeat(2, 1fr); }
+      .matrix { grid-template-columns: repeat(2, 1fr); }
+      .matrix-item:nth-child(2n) { border-right: 0; }
+      .matrix-item:nth-child(4n) { border-right: 0; }
+      .matrix-item:nth-last-child(-n+4) { border-bottom: 1px solid var(--line); }
+      .matrix-item:nth-last-child(-n+2) { border-bottom: 0; }
+      .data-panel { min-height: 360px; }
+      .stat-grid { margin-top: 90px; }
+    }
+
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 22px, var(--max)); }
+      header { padding-top: 18px; }
+      .nav { align-items: flex-start; }
+      .navlinks { display: none; }
+      .hero { padding-top: 36px; }
+      .apps,
+      .matrix { grid-template-columns: 1fr; }
+      .matrix-item,
+      .matrix-item:nth-child(2n),
+      .matrix-item:nth-child(4n) { border-right: 0; }
+      .matrix-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .matrix-item:last-child { border-bottom: 0; }
+      .data-title { font-size: 34px; }
+      .rings { width: 150px; height: 150px; }
+      .stat-grid { grid-template-columns: 1fr; margin-top: 70px; }
+      .card { min-height: 230px; }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Remember When Tuesday<br/>Felt Different From Thursday?</h1>
-        <p class="subheadline gradient-text">Your Phone Made Life Boring. Now It'll Fix It.</p>
-        <p class="body-text">
-            Same breakfast. Same commute. Same shows. Same scroll.<br>
-            When did everything become so predictable?<br>
-            When did nothing feel new anymore?
+  <header class="wrap">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Secret Prophecy home">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Secret Prophecy</span>
+      </a>
+      <div class="navlinks">
+        <a href="#apps">Apps</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#contact">Links</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero">
+      <div>
+        <p class="kicker">Private iPhone apps · Offline-first · Built small</p>
+        <h1>Tools for the awkward human moments software usually misunderstands.</h1>
+        <p>
+          A portfolio of small iPhone apps for field work, sensitive meetings, time anxiety,
+          decisions, personal reflection, and the private things that should not become cloud content.
         </p>
-        <div class="live-counter">
-            <span class="counter-number">50,847</span> people cured their boredom this week
+        <div class="cta-row">
+          <a class="button" href="https://apps.apple.com/gb/developer/nikola-knezevic/id1774051159">View Developer Portfolio</a>
+          <a class="button secondary" href="#apps">Explore the Apps</a>
         </div>
-        <a href="#download" class="cta-button">Pay Once - Never Be Bored Again</a>
-        <p class="micro-copy">Rated 4.8 stars • As seen on TikTok • Works offline</p>
-    </section>
+      </div>
 
-    <!-- Problem Section -->
-    <section class="problem-section">
-        <h2 class="section-title">The Boredom Epidemic Nobody Talks About</h2>
-        <div class="problem-grid">
-            <div class="problem-card">
-                <h3>The Scroll Trap</h3>
-                <p>450 scrolls. 0 memories. Your thumb moves but your life doesn't. You've seen everything worth seeing, twice.</p>
-            </div>
-            <div class="problem-card">
-                <h3>The Comfort Prison</h3>
-                <p>Same coffee order for 3 years. Your barista doesn't even ask anymore. Your "usual" became your entire personality.</p>
-            </div>
-            <div class="problem-card">
-                <h3>The Netflix Void</h3>
-                <p>"Are you still watching?" Yes. But you're not really living. Episode 47 of a show you don't even like.</p>
-            </div>
-        </div>
-        <p class="pull-quote">"I'm not depressed. I'm just... bored with everything."</p>
-    </section>
-
-    <!-- Solution Section -->
-    <section class="solution-section">
-        <h2 class="section-title">Daily Suggestions That Actually Cure Boredom</h2>
-        <div class="challenge-card">
-            <div class="challenge-label">Today's Boredom Cure</div>
-            <div class="challenge-text">"Order the menu item with the longest name you can find"</div>
-            <span class="chaos-points">Difficulty: Easy • Time: 30 min • Fun: Guaranteed</span>
-        </div>
-        <div class="benefit-boxes">
-            <div class="benefit-box">
-                <div class="benefit-icon">🎯</div>
-                <div class="benefit-title">Smart Suggestions</div>
-                <div class="benefit-text">Not random. Scientifically designed to rewire your curiosity circuits.</div>
-            </div>
-            <div class="benefit-box">
-                <div class="benefit-icon">🌍</div>
-                <div class="benefit-title">Real World Activities</div>
-                <div class="benefit-text">Not another game. Actual things that make actual memories.</div>
-            </div>
-            <div class="benefit-box">
-                <div class="benefit-icon">📈</div>
-                <div class="benefit-title">Boredom Score</div>
-                <div class="benefit-text">Track your transformation from 93% boring to genuinely interesting</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof Ticker -->
-    <section class="ticker-section">
-        <div class="ticker-wrapper">
-            <span class="ticker-item">• <strong>Emma:</strong> "Deleted Instagram. This is better."</span>
-            <span class="ticker-item">• <strong>James:</strong> "My therapist asked what changed. It's this app."</span>
-            <span class="ticker-item">• <strong>Sarah:</strong> "Found 12 new favorite places in my own city"</span>
-            <span class="ticker-item">• <strong>Mike:</strong> "Wife thinks I'm having midlife crisis. Nope, just not bored."</span>
-            <span class="ticker-item">• <strong>Lisa:</strong> "Saved £300 by not shopping when bored"</span>
-            <span class="ticker-item">• <strong>Tom:</strong> "Kids love the family challenges"</span>
-            <!-- Duplicate for continuous scroll -->
-            <span class="ticker-item">• <strong>Emma:</strong> "Deleted Instagram. This is better."</span>
-            <span class="ticker-item">• <strong>James:</strong> "My therapist asked what changed. It's this app."</span>
-            <span class="ticker-item">• <strong>Sarah:</strong> "Found 12 new favorite places in my own city"</span>
-            <span class="ticker-item">• <strong>Mike:</strong> "Wife thinks I'm having midlife crisis. Nope, just not bored."</span>
-            <span class="ticker-item">• <strong>Lisa:</strong> "Saved £300 by not shopping when bored"</span>
-            <span class="ticker-item">• <strong>Tom:</strong> "Kids love the family challenges"</span>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="how-section">
-        <h2 class="section-title">Three Steps to Never Being Bored Again</h2>
-        <div class="steps-container">
-            <div class="step-card">
-                <div class="step-number">1</div>
-                <div class="step-title">Get Your Daily Cure</div>
-                <div class="step-description">One perfect suggestion designed for your specific type of bored</div>
-            </div>
-            <div class="step-card">
-                <div class="step-number">2</div>
-                <div class="step-title">Actually Do It</div>
-                <div class="step-description">Takes 5 minutes to 2 hours. Always worth it. Always.</div>
-            </div>
-            <div class="step-card">
-                <div class="step-number">3</div>
-                <div class="step-title">Feel Alive Again</div>
-                <div class="step-description">Watch your boredom melt away. Life gets interesting fast.</div>
-            </div>
-        </div>
-        <div class="progress-viz">
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-            <div class="progress-labels">
-                <span>Day 1: 93% Bored</span>
-                <span>Day 30: 7% Bored (Perfect Balance)</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOMO Section -->
-    <section class="fomo-section">
-        <div class="urgency-box">
-            <div class="urgency-icon">⚠️</div>
-            <h3>The Average Person Will Have The Same 10 Stories Forever</h3>
-        </div>
+      <aside class="panel data-panel" aria-label="Portfolio principles">
+        <div class="rings" aria-hidden="true"></div>
+        <h2 class="data-title">Less software. More intent.</h2>
         <div class="stat-grid">
-            <div class="stat-card">
-                <div class="stat-number">2,920</div>
-                <div class="stat-label">Identical days in the next 8 years</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">87%</div>
-                <div class="stat-label">Will eat the same 9 meals on repeat</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">4 hrs</div>
-                <div class="stat-label">Daily scrolling, zero memories made</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">91%</div>
-                <div class="stat-label">Die with same stories they had at 30</div>
-            </div>
+          <div class="stat">
+            <div class="num">0</div>
+            <div class="label">Accounts required where the job does not need one.</div>
+          </div>
+          <div class="stat">
+            <div class="num">1</div>
+            <div class="label">Specific human problem per app.</div>
+          </div>
+          <div class="stat">
+            <div class="num">13</div>
+            <div class="label">App Store links, each pointing to a specific tool.</div>
+          </div>
+          <div class="stat">
+            <div class="num">100%</div>
+            <div class="label">Designed around practical moments, not dashboards.</div>
+          </div>
         </div>
-        <h2 class="section-title gradient-text">Don't Die Boring.</h2>
+      </aside>
     </section>
 
-    <!-- Download Section -->
-    <section class="download-section" id="download">
-        <h2 class="section-title">Your Interesting Life Starts in 30 Seconds</h2>
-        
-        <div class="download-buttons">
-            <a href="https://apple.co/48sJRNi" class="app-store-button">
-                📱 Download for iPhone
-            </a>
+    <section id="apps" class="wrap section">
+      <div class="section-head">
+        <div class="section-num">01 · Portfolio</div>
+        <div>
+          <h2>Each app has one job. That is the point.</h2>
+          <p class="lead">Replace generic productivity theatre with narrower tools that do the useful thing and then get out of the way.</p>
         </div>
-        
-        <p style="color: rgba(255,255,255,0.6); margin: 20px 0;">
-            Free forever (1 daily suggestion) • Premium: £9.99 • No ads ever
-        </p>
-        
-        <div class="app-features">
-            <div class="feature-item">Daily boredom cures</div>
-            <div class="feature-item">Track your progress</div>
-            <div class="feature-item">Kids mode included</div>
-            <div class="feature-item">Works offline</div>
-            <div class="feature-item">Private & secure</div>
-            <div class="feature-item">No account required</div>
-        </div>
-        
-        <div class="reviews-section">
-            <h3 style="color: #00ffff; margin-bottom: 30px;">Real Reviews from Real Humans</h3>
-            
-            <div class="review">
-                <div class="rating">★★★★★</div>
-                <div class="review-text">"This app saved my marriage. We have things to talk about again."</div>
-                <div class="review-author">- David K., verified purchase</div>
-            </div>
-            
-            <div class="review">
-                <div class="rating">★★★★★</div>
-                <div class="review-text">"My kids bored phase is over. They love the daily challenges."</div>
-                <div class="review-author">- Sarah M., parent of 3</div>
-            </div>
-            
-            <div class="review">
-                <div class="rating">★★★★★</div>
-                <div class="review-text">"Deleted all my time-wasting apps. This actually improves my life."</div>
-                <div class="review-author">- Marcus T., recovering scroller</div>
-            </div>
-        </div>
-        
-        <div style="margin-top: 40px;">
-            <p style="font-size: 24px; color: #00ffff; margin-bottom: 10px;">
-                "The opposite of boredom isn't entertainment. It's curiosity."
-            </p>
-            <p style="color: rgba(255,255,255,0.6);">- Secret Prophecy Philosophy</p>
-        </div>
+      </div>
+
+      <div class="apps">
+        <a class="card" style="--accent: var(--red)" href="https://apps.apple.com/gb/app/perimenopause-compass/id6762631961">
+          <span class="tag">Health conversation</span>
+          <h3>Perimenopause Compass</h3>
+          <p>A private symptom record for conversations that deserve better than vague memory.</p>
+          <span class="link">Open on App Store</span>
+        </a>
+
+        <a class="card" style="--accent: var(--green)" href="https://apps.apple.com/gb/app/liftledger-loler-inspections/id6760823770">
+          <span class="tag">Field work</span>
+          <h3>LiftLedger</h3>
+          <p>LOLER inspection records for people standing beside equipment, not sitting calmly at a dashboard.</p>
+          <span class="link">Open on App Store</span>
+        </a>
+
+        <a class="card" style="--accent: var(--blue)" href="https://apps.apple.com/gb/app/meeting-minutes-pragmatic-ai/id6752467167">
+          <span class="tag">Privacy</span>
+          <h3>Meeting Minutes</h3>
+          <p>AI meeting notes for conversations that should not become cloud content.</p>
+          <span class="link">Open on App Store</span>
+        </a>
+
+        <a class="card" style="--accent: var(--ochre)" href="https://apps.apple.com/gb/app/pragmatic-invoice-maker-to-go/id6736955339">
+          <span class="tag">Work</span>
+          <h3>Pragmatic Invoice Maker</h3>
+          <p>Quotes and invoices for people who are not sitting calmly at a desk.</p>
+          <span class="link">Open on App Store</span>
+        </a>
+
+        <a class="card" style="--accent: var(--violet)" href="https://apps.apple.com/gb/app/fuzzy-time-stress-relief/id6753138124">
+          <span class="tag">Time</span>
+          <h3>Fuzzy Time</h3>
+          <p>A clock that tells you less, because precision is not always peace.</p>
+          <span class="link">Open on App Store</span>
+        </a>
+
+        <a class="card" style="--accent: var(--violet)" href="https://apps.apple.com/gb/app/fuzzy-time-stress-relief/id6753138124?platform=watch">
+          <span class="tag">Apple Watch</span>
+          <h3>Fuzzy Time for Watch</h3>
+          <p>Time made deliberately softer, closer to your wrist and further from panic.</p>
+          <span class="link">Open Watch version</span>
+        </a>
+
+        <a class="card" style="--accent: var(--ochre)" href="https://apps.apple.com/gb/app/un-decision-confidence-tool/id6753641057">
+          <span class="tag">Decision</span>
+          <h3>UN</h3>
+          <p>For when the problem is not choosing, but reopening the choice forever.</p>
+          <span class="link">Open on App Store</span>
+        </a>
+
+        <a class="card" style="--accent: var(--blue)" href="https://apps.apple.com/gb/app/this-one-thing-single-task/id6753627958">
+          <span class="tag">Focus</span>
+          <h3>This One Thing</h3>
+          <p>Productivity reduced to the only question that matters today.</p>
+          <span class="link">Open on App Store</span>
+        </a>
+
+        <a class="card" style="--accent: var(--green)" href="https://apps.apple.com/gb/app/later-stress-anxiety-relief/id6753189220">
+          <span class="tag">Delay</span>
+          <h3>LATER</h3>
+          <p>A pause button for thoughts that should not become immediate distractions.</p>
+          <span class="link">Open on App Store</span>
+        </a>
+
+        <a class="card" style="--accent: var(--red)" href="https://apps.apple.com/gb/app/heavy-screen-time-by-weight/id6753640404">
+          <span class="tag">Screen time</span>
+          <h3>HEAVY</h3>
+          <p>A weight-check ritual for screen time, not another productivity fantasy.</p>
+          <span class="link">Open on App Store</span>
+        </a>
+
+        <a class="card" style="--accent: var(--red)" href="https://apps.apple.com/gb/app/louder-voice-confidence/id6753901380">
+          <span class="tag">Voice</span>
+          <h3>LOUDER</h3>
+          <p>Voice confidence for moments when normal phone behaviour is too polite.</p>
+          <span class="link">Open on App Store</span>
+        </a>
+
+        <a class="card" style="--accent: var(--violet)" href="https://apps.apple.com/gb/app/secret-prophecy-bucket-list/id6752826465">
+          <span class="tag">Reflection</span>
+          <h3>Secret Prophecy</h3>
+          <p>Tarot reframed as private reflection, not fortune-telling theatre.</p>
+          <span class="link">Open on App Store</span>
+        </a>
+
+        <a class="card" style="--accent: var(--green)" href="https://apps.apple.com/gb/app/brain-habit-offline-quiz-game/id6751650994">
+          <span class="tag">Brain training</span>
+          <h3>Brain Habit</h3>
+          <p>An offline quiz habit for keeping the mind active without another cloud account.</p>
+          <span class="link">Open on App Store</span>
+        </a>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p class="tagline">
-            "We don't cure boredom. We cure the habits that cause it.<br>
-            One beautifully random suggestion at a time."
-        </p>
-        <div class="social-links">
-            <a href="https://twitter.com/pragmathema">Twitter</a>
-            <a href="https://instagram.com/pragmathema">Instagram</a>
-            <a href="https://tiktok.com/@pragmathema">TikTok</a>
+    <section id="philosophy" class="wrap section">
+      <div class="section-head">
+        <div class="section-num">02 · Operating belief</div>
+        <div>
+          <h2>Good software should sometimes ask for less.</h2>
+          <p class="lead">Less login. Less cloud dependency. Less ceremony. Less pretending the user is at a desk with perfect attention and perfect Wi‑Fi.</p>
         </div>
-        <p class="hashtag">#NeverBoredAgain #BoredNoMore #CureBoredom</p>
-    </footer>
+      </div>
 
-    <script>
-        // Animated counter
-        function animateCounter() {
-            const counter = document.querySelector('.counter-number');
-            const target = 50847;
-            let current = 48000;
-            
-            const increment = () => {
-                if (current < target) {
-                    current += Math.floor(Math.random() * 100) + 1;
-                    if (current > target) current = target;
-                    counter.textContent = current.toLocaleString();
-                    setTimeout(increment, Math.random() * 100 + 50);
-                    }
-            };
-            
-            setTimeout(increment, 1000);
-        }
+      <div class="matrix">
+        <div class="matrix-item">
+          <strong>No account by default</strong>
+          <span>If a tool does not need identity, it should not demand identity.</span>
+        </div>
+        <div class="matrix-item">
+          <strong>Local-first thinking</strong>
+          <span>Private notes, records and reflections should stay close to the person who made them.</span>
+        </div>
+        <div class="matrix-item">
+          <strong>One awkward job</strong>
+          <span>Every app begins with a specific irritation, not a feature backlog.</span>
+        </div>
+        <div class="matrix-item">
+          <strong>Human context</strong>
+          <span>Field work, anxiety, memory, delay, doubt and reflection are design constraints.</span>
+        </div>
+        <div class="matrix-item">
+          <strong>Small surfaces</strong>
+          <span>The best interface is often the one that disappears once the decision is made.</span>
+        </div>
+        <div class="matrix-item">
+          <strong>Practical privacy</strong>
+          <span>Privacy is not a slogan. It is an architectural choice.</span>
+        </div>
+        <div class="matrix-item">
+          <strong>Clear rituals</strong>
+          <span>Small repeated actions beat bloated systems people abandon.</span>
+        </div>
+        <div class="matrix-item">
+          <strong>Designed restraint</strong>
+          <span>Not every problem improves when you add a dashboard.</span>
+        </div>
+      </div>
+    </section>
 
-        // Initialize on page load
-        window.addEventListener('load', () => {
-            animateCounter();
-        });
+    <section class="wrap section">
+      <div class="quote">
+        <div class="panel quote-card">
+          <blockquote>Not another productivity suite. A set of small exits from bad defaults.</blockquote>
+          <p>Built for moments when mainstream software is overbuilt, intrusive, or aimed at the wrong user.</p>
+        </div>
+        <div class="panel quote-card">
+          <blockquote>The app should feel obvious only after the behaviour has been reframed.</blockquote>
+          <p>Quote before you leave. Record before you forget. Decide before you reopen. Tell less time when exact time becomes noise.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        // Track download clicks
-        document.querySelectorAll('.cta-button, .app-store-button').forEach(button => {
-            button.addEventListener('click', () => {
-                // Track conversion if analytics present
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'click', {
-                        'event_category': 'download',
-                        'event_label': 'app_store_link'
-                    });
-                }
-            });
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center'
-                    });
-                }
-            });
-        });
-
-        // Add subtle parallax effect
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero && scrolled < window.innerHeight) {
-                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-        });
-
-        // Add hover effects
-        document.querySelectorAll('.problem-card, .benefit-box, .step-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-            });
-        });
-    </script>
+  <footer id="contact" class="wrap">
+    <div class="footer-grid">
+      <div>
+        <strong>Secret Prophecy</strong><br />
+        Private, practical iPhone apps by Nikola Knezevic.
+      </div>
+      <div class="small-links">
+        <a href="https://apps.apple.com/gb/developer/nikola-knezevic/id1774051159">App Store</a>
+        <a href="https://www.secretprophecy.com">secretprophecy.com</a>
+        <a href="mailto:office@pragmathema.co.uk">office@pragmathema.co.uk</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
